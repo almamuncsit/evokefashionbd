@@ -302,23 +302,23 @@ return [
         'icon' => '',
     ],
 
-    /**
-     * Appearance.
-     */
-    [
-        'key' => 'appearance',
-        'name' => 'admin::app.components.layouts.sidebar.appearance',
-        'route' => 'admin.appearance.themes.index',
-        'sort' => 8,
-        'icon' => 'icon-store',
-        'icon-class' => 'appearance-icon',
-    ], [
-        'key' => 'appearance.themes',
-        'name' => 'admin::app.components.layouts.sidebar.themes',
-        'route' => 'admin.appearance.themes.index',
-        'sort' => 1,
-        'icon' => '',
-    ],
+    // /**
+    //  * Appearance.
+    //  */
+    // [
+    //     'key' => 'appearance',
+    //     'name' => 'admin::app.components.layouts.sidebar.appearance',
+    //     'route' => 'admin.appearance.themes.index',
+    //     'sort' => 8,
+    //     'icon' => 'icon-store',
+    //     'icon-class' => 'appearance-icon',
+    // ], [
+    //     'key' => 'appearance.themes',
+    //     'name' => 'admin::app.components.layouts.sidebar.themes',
+    //     'route' => 'admin.appearance.themes.index',
+    //     'sort' => 1,
+    //     'icon' => '',
+    // ],
 
     /**
      * Settings.
