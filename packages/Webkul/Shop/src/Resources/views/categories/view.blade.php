@@ -40,11 +40,17 @@
 
     {!! view_render_event('bagisto.shop.categories.view.banner_path.after') !!}
 
+    <div class="container mt-10 px-[60px] max-lg:px-8 max-md:mt-6 max-md:px-4">
+        <h1 class="font-dmserif text-[40px] leading-tight max-md:text-3xl max-sm:text-2xl">
+            {{ $category->name }}
+        </h1>
+    </div>
+
     {!! view_render_event('bagisto.shop.categories.view.description.before') !!}
 
     @if (in_array($category->display_mode, [null, 'description_only', 'products_and_description']))
         @if ($category->description)
-            <div class="container mt-[34px] px-[60px] max-lg:px-8 max-md:mt-4 max-md:px-4 max-md:text-sm max-sm:text-xs">
+            <div class="container mt-2 px-[60px] text-zinc-500 max-lg:px-8 max-md:px-4 max-md:text-sm max-sm:text-xs">
                 {!! $category->description !!}
             </div>
         @endif
