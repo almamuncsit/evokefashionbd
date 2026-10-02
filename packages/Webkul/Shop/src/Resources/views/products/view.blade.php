@@ -405,8 +405,8 @@
 
                                         <x-shop::button
                                             type="submit"
-                                            class="secondary-button w-full max-w-full max-sm:!max-w-none max-sm:!w-auto max-md:py-3 max-sm:rounded-lg max-sm:py-1.5"
-                                            button-type="secondary-button"
+                                            class="primary-button w-full max-w-full max-sm:!max-w-none max-sm:!w-auto max-md:py-3 max-sm:rounded-lg max-sm:py-1.5"
+                                            button-type="primary-button"
                                             :loading="false"
                                             :title="trans('shop::app.products.view.add-to-cart')"
                                             :disabled="! $product->isSaleable(1)"

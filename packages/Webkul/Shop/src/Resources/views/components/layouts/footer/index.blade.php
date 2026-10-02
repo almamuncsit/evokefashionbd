@@ -14,13 +14,26 @@
 @endphp
 
 <footer
-    class="mt-9 bg-lightOrange max-sm:mt-10"
+    class="mt-16 bg-navyBlue text-zinc-300 max-sm:mt-10"
     @if ($section && $sectionRepository->isPreviewing())
         data-section-id="{{ $section->id }}"
         data-section-name="{{ $section->name }}"
     @endif
 >
     <div class="flex justify-between gap-x-6 gap-y-8 p-[60px] max-1060:flex-col-reverse max-md:gap-5 max-md:p-8 max-sm:px-4 max-sm:py-5">
+        <a
+            href="{{ route('shop.home.index') }}"
+            class="shrink-0 max-1060:hidden"
+            aria-label="{{ $channel->name }}"
+        >
+            <img
+                src="{{ $channel->logo_url ?? bagisto_asset('images/logo.svg') }}"
+                width="131"
+                height="29"
+                alt="{{ $channel->logo_alt ?: $channel->name }}"
+            >
+        </a>
+
         <!-- For Desktop View -->
         <div
             class="flex flex-wrap items-start gap-24 max-1180:gap-6 max-1060:hidden"
@@ -28,10 +41,13 @@
         >
             @if ($section?->options)
                 @foreach ($section->options as $footerLinkSection)
-                    <ul class="grid gap-5 text-sm">
+                    <ul class="grid gap-4 text-sm">
                         @foreach ($footerLinkSection as $link)
                             <li>
-                                <a href="{{ $link['url'] }}">
+                                <a
+                                    href="{{ $link['url'] }}"
+                                    class="hover:text-gold"
+                                >
                                     {{ $link['title'] }}
                                 </a>
                             </li>
@@ -44,9 +60,9 @@
         <!-- For Mobile view -->
         <x-shop::accordion
             :is-active="false"
-            class="hidden !w-full rounded-xl !border-2 !border-[#e9decc] max-1060:block max-sm:rounded-lg"
+            class="hidden !w-full rounded-xl !border !border-white/10 max-1060:block max-sm:rounded-lg"
         >
-            <x-slot:header class="rounded-t-lg bg-[#F1EADF] font-medium max-md:p-2.5 max-sm:px-3 max-sm:py-2 max-sm:text-sm">
+            <x-slot:header class="rounded-t-lg !bg-white/5 font-medium text-white max-md:p-2.5 max-sm:px-3 max-sm:py-2 max-sm:text-sm">
                 @lang('shop::app.components.layouts.footer.footer-content')
             </x-slot>
 
@@ -61,7 +77,7 @@
                                 <li>
                                     <a
                                         href="{{ $link['url'] }}"
-                                        class="text-sm font-medium max-sm:text-xs"
+                                        class="text-sm font-medium text-zinc-300 hover:text-gold max-sm:text-xs"
                                     >
                                         {{ $link['title'] }}
                                     </a>
@@ -79,14 +95,14 @@
         @if (core()->getConfigData('customer.settings.newsletter.subscription'))
             <div class="grid gap-2.5">
                 <p
-                    class="max-w-[288px] text-3xl italic leading-[45px] text-navyBlue max-md:text-2xl max-sm:text-lg"
+                    class="max-w-[320px] font-dmserif text-3xl leading-[42px] text-white max-md:text-2xl max-sm:text-lg"
                     role="heading"
                     aria-level="2"
                 >
                     @lang('shop::app.components.layouts.footer.newsletter-text')
                 </p>
 
-                <p class="text-xs">
+                <p class="text-sm text-zinc-400">
                     @lang('shop::app.components.layouts.footer.subscribe-stay-touch')
                 </p>
 
@@ -101,7 +117,7 @@
                         <div class="relative w-full">
                             <x-shop::form.control-group.control
                                 type="email"
-                                class="block w-[420px] max-w-full rounded-xl border-2 border-[#e9decc] bg-[#F1EADF] px-5 py-4 text-base max-1060:w-full max-md:p-3.5 max-sm:mb-0 max-sm:rounded-lg max-sm:border-2 max-sm:p-2 max-sm:text-sm"
+                                class="block w-[420px] max-w-full rounded-full border border-white/15 bg-white/5 px-6 py-4 text-base text-white placeholder:text-zinc-500 focus:border-gold max-1060:w-full max-md:p-3.5 max-md:px-5 max-sm:mb-0 max-sm:p-2 max-sm:px-4 max-sm:text-sm"
                                 name="email"
                                 rules="required|email"
                                 label="Email"
@@ -114,7 +130,7 @@
     
                             <button
                                 type="submit"
-                                class="absolute top-1.5 flex w-max items-center rounded-xl bg-white px-7 py-2.5 font-medium hover:bg-zinc-100 ltr:right-2 rtl:left-2 max-md:top-1 max-md:px-5 max-md:text-xs max-sm:mt-0 max-sm:rounded-lg max-sm:px-4 max-sm:py-2"
+                                class="absolute top-1.5 flex w-max items-center rounded-full bg-gold px-7 py-2.5 text-sm font-medium uppercase tracking-[0.12em] text-white hover:bg-gold-dark ltr:right-2 rtl:left-2 max-md:top-1 max-md:px-5 max-md:text-xs max-sm:mt-0 max-sm:px-4 max-sm:py-2"
                             >
                                 @lang('shop::app.components.layouts.footer.subscribe')
                             </button>
@@ -127,10 +143,10 @@
         {!! view_render_event('bagisto.shop.layout.footer.newsletter_subscription.after') !!}
     </div>
 
-    <div class="flex justify-between bg-[#F1EADF] px-[60px] py-3.5 max-md:justify-center max-sm:px-5">
+    <div class="flex justify-between border-t border-white/10 px-[60px] py-5 max-md:justify-center max-sm:px-5">
         {!! view_render_event('bagisto.shop.layout.footer.footer_text.before') !!}
 
-        <p class="text-sm text-zinc-600 max-md:text-center">
+        <p class="text-sm text-zinc-400 max-md:text-center">
             @if (core()->getConfigData('general.content.footer.copyright_content'))
                 {!! core()->getConfigData('general.content.footer.copyright_content') !!}
             @else
