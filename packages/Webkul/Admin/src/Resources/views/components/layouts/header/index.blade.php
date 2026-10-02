@@ -211,6 +211,7 @@
                     </div>
                 @endforeach
 
+                {{--
                 <!-- Help & Resources -->
                 @php
                     $isHelpActive = request()->routeIs('admin.help.index');
@@ -243,6 +244,7 @@
                         </p>
                     </a>
                 </div>
+                --}}
             </nav>
         </div>
     </x-slot>

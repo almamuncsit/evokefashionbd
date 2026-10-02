@@ -46,6 +46,7 @@
                 </div>
             @endforeach
 
+            {{--
             <!-- Help & Resources (Always Visible) -->
             @php
                 $isHelpActive = request()->routeIs('admin.help.index');
@@ -78,6 +79,7 @@
                     </p>
                 </a>
             </div>
+            --}}
         </nav>
     </div>
 

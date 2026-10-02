@@ -1,12 +1,29 @@
 {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.before') !!}
 
-<div class="grid min-h-[78px] w-full grid-cols-[1fr_auto_1fr] items-center gap-x-8 border-b border-zinc-100 px-[60px] max-1180:gap-x-5 max-1180:px-8">
+<div class="flex min-h-[78px] w-full items-center justify-between gap-x-8 border-b border-zinc-100 px-[60px] max-1180:gap-x-5 max-1180:px-8">
     <!--
         This section will provide categories for the first, second, and third levels. If
         additional levels are required, users can customize them according to their needs.
     -->
     <!-- Left Nagivation Section -->
-    <div class="flex items-center justify-start">
+    <div class="flex items-center gap-x-10 max-1180:gap-x-5">
+        {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.logo.before') !!}
+
+        <a
+            href="{{ route('shop.home.index') }}"
+            class="shrink-0"
+            aria-label="@lang('shop::app.components.layouts.header.desktop.bottom.bagisto')"
+        >
+            <img
+                src="{{ core()->getCurrentChannel()->logo_url ?? bagisto_asset('images/logo.svg') }}"
+                width="131"
+                height="29"
+                alt="{{ core()->getCurrentChannel()->logo_alt ?: config('app.name') }}"
+            >
+        </a>
+
+        {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.logo.after') !!}
+
         {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.category.before') !!}
 
         <v-desktop-category>
@@ -31,30 +48,13 @@
         {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.category.after') !!}
     </div>
 
-    {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.logo.before') !!}
-
-    <a
-        href="{{ route('shop.home.index') }}"
-        class="justify-self-center"
-        aria-label="@lang('shop::app.components.layouts.header.desktop.bottom.bagisto')"
-    >
-        <img
-            src="{{ core()->getCurrentChannel()->logo_url ?? bagisto_asset('images/logo.svg') }}"
-            width="158"
-            height="35"
-            alt="{{ core()->getCurrentChannel()->logo_alt ?: config('app.name') }}"
-        >
-    </a>
-
-    {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.logo.after') !!}
-
     <!-- Right Nagivation Section -->
     <div class="flex items-center justify-end gap-x-7 max-[1100px]:gap-x-5">
 
         {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.search_bar.before') !!}
 
         <!-- Search Bar Container -->
-        <div class="relative w-full max-w-[240px]">
+        <div class="relative w-full min-w-[200px] max-w-[300px]">
             <form
                 action="{{ route('shop.search.index') }}"
                 class="flex items-center"
